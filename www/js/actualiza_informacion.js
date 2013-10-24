@@ -10,7 +10,7 @@ function actualiza_set_datos()
 				 {				 
                   for(var i=0; i < result.rows.length; i++) 
 				  {
-				   alert("Actualizame: "+actualiza_informacion(result.rows.item(i)['convencion_parametro'],result.rows.item(i)['valor_parametro']));
+				   actualiza_informacion(result.rows.item(i)['convencion_parametro'],result.rows.item(i)['valor_parametro']);
 				  }
 				 }); 
 
@@ -26,7 +26,7 @@ function actualiza_informacion(tabla, url)
                     type : 'GET',
                     dataType : 'json',
                     error: function() { 
-							alert('El catálogo de datos no se encuentra disponible'); 
+							alert('El catálogo de datos '+tabla+' no se encuentra disponible'); 
 						   }
                 });
 
@@ -34,6 +34,7 @@ function actualiza_informacion(tabla, url)
 		    var id_registro = 1;
 			var id_palabra = 1;
 			actualizame = 1;
+			alert('Entra a actualizar '+tabla);
 			$.each(r.d, function(k, v) {
 				if (tabla == 'informacion_programa') 
 				{
@@ -49,12 +50,6 @@ function actualiza_informacion(tabla, url)
 				else 
 				{
 				 sql_query.push("Insert into ubicacion_programa Values ("+id_registro+",'"+v.codigo_dane_departamento+"','"+v.departamento+"','"+v.codigo_dane_municipio+"','"+v.municipio+"','"+v.tipo+"','"+v.nombre+"','"+v.direccion+"','"+v.barrio+"','"+v.telefono_celular+"','"+v.email+"','"+v.latitud+"','"+v.longitud+"')");
-				 if  (id_registro == 1)
-				 {
-				  var x=document.getElementById("demo");
-				  x.innerHTML=sql_query[0];
-				 }
-
 				} 
 				
 				
