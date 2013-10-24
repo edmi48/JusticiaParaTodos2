@@ -5,8 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
         <script type="text/javascript" src="js/base_datos.js"></script>
-	    <script type="text/javascript" src="js/actualiza_informacion.js"></script>
-        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/actualiza_informacion.js"></script>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="js/zebra_dialog.js"></script>
 		<script type="text/javascript" src="js/carrusel.js"></script>
 		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
@@ -108,7 +108,6 @@ ventana_ancho2= (ventana_ancho2-300)/2;
 	function abrir_opcion(pagina) 
 { 
 if (checkConnection() == 1) {
-	alert(pagina);
 	window.location = (pagina); 
 }
 else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Conexión a Internet</strong>', {
@@ -119,7 +118,6 @@ else  $.Zebra_Dialog('<strong>No es posible ejecutar esta funcionalidad sin Cone
 
 function abrir_twitter()
 {
- alert (device.platform);
  if (device.platform  == 'iOS') 
  /*$.Zebra_Dialog('<strong>Funcionalidad No Disponible para iOS</strong>', {
     'type':     'warning',
@@ -128,9 +126,8 @@ function abrir_twitter()
 window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes');
 //window.location = ('sigueme_ios.html'); 
  else {
- alert("abrir sigueme.html");
  pagina="sigueme.html";
-  abrir_opcion("sigueme.html");
+ abrir_opcion("sigueme.html");
  }
 } 
         function checkConnection() 
@@ -149,9 +146,30 @@ window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes'
 <body onresize="window.location.reload();" onload="inicializa_db();">
 
 <script> document.write('<div class="navigation" id="navigata" style="min-width: auto; height: '+ventana_alto2+'px; margin: auto auto">') </script>
-<script> document.write('<img src="images/fondo.jpg" alt="Fondo" id="bg" style="height: '+ventana_alto2+'px; width: auto; left: 0px;">') </script>
+<script> 
+	if ($(window).width() < $(window).height()) {
+		document.write('<img src="images/fondo.png" alt="Fondo" id="bg" style="height: '+ventana_alto2+'px; width: auto; left: 0px;">') 
+	}
+	else {
+		document.write('<img src="images/fondo_ancho.png" alt="Fondo" id="bg" style="height: '+ventana_alto2+'px; width: auto; left: 0px;">') 
+	}
+</script>
 
 <script> 
+	
+	var icon_alto;				
+	var icon_ancho;
+	ventana_alto3 = ventana_alto3 -20;
+	if ($(window).width() < $(window).height()) {
+		icon_alto = 70;				
+		icon_ancho = 65;
+		
+	}
+	else {
+		icon_alto = 65;				
+		icon_ancho = 60;
+		ventana_alto3 = ventana_alto3 -10;
+	}
 
  if ($(window).width() < 450)
  {
@@ -159,12 +177,12 @@ window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes'
 			document.write('<div id="divIzquierda"></div>')
 			document.write('<div id="divCentro">')
 				document.write('<ul>')
-					document.write('<li><a href="orientate.html" target="_self"><img src="images/opcion1.png" class="imagen-link" height="55px" width="50px" ></li>')
-					document.write('<li><a href="#" onclick=\'abrir_opcion("informate.html");return false\'><img src="images/opcion2.png" class="imagen-link" height="55px" width="50px"></li>')
-					document.write('<li><href="#" onclick=\'abrir_twitter();return false\'><img src="images/opcion3.png" class="imagen-link" height="55px" width="50px"></li>')
-					document.write('<li><a href="sugiereme.html" target="_self"><img src="images/opcion4.png" class="imagen-link" height="55px" width="50px"></li>')
-					document.write('<li><a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="55px" width="50px"></a></li>')
-					document.write('<li><a href="actualizame.html" target="_self"><img src="images/opcion6.png" class="imagen-link" height="55px" width="50px"></a></li>')
+					document.write('<li><a href="orientate.html" target="_self"><img src="images/opcion1.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
+					document.write('<li><a href="#" onclick=\'abrir_opcion("informate.html");return false\'><img src="images/opcion2.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
+					document.write('<li><a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
+					document.write('<li><a href="#" onclick=\'abrir_opcion("sugiereme.html");return false\'><img src="images/opcion4.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
+					document.write('<li><a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
+					document.write('<li><a href="#" onclick=\'abrir_opcion("actualizame.html");return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a></li>')
 				document.write('</ul>')
 			document.write('</div>')
 			document.write('<div id="divDerecha"></div>')
@@ -173,31 +191,31 @@ window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes'
  }
  else 
  {
-				document.write('<div class="item shop">')
-                document.write('<a href="orientate.html" target="_self"><img src="images/opcion1.png"></a>')
-				document.write('</div>')
+		icon_alto = 110;				
+		icon_ancho = 100;
+		document.write('<div class="item shop">')
+                document.write('<a href="orientate.html" target="_self"><img src="images/opcion1.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
+		document.write('</div>')
 				
                 document.write('<div class="item youtube" >')
-                document.write('<a href="#" onclick=\'abrir_opcion("informate.html");return false\'><img src="images/opcion2.png"></a>')
+                document.write('<a href="#" onclick=\'abrir_opcion("informate.html");return false\'><img src="images/opcion2.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
                 document.write('<div class="item fav">')
-                document.write('<a href="#" onclick=\'abrir_twitter();return false\'><img src="images/opcion3.png">')
+                document.write('<a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
                 document.write('<div class="item home">')
-                document.write('<a href="sugiereme.html" target="_self"><img src="images/opcion4.png">')
+                document.write('<a href="#" onclick=\'abrir_opcion("sugiereme.html");return false\'><img src="images/opcion4.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 
                 document.write('<div class="item user" >')
-                document.write('<a href="creditos.html" target="_self"><img src="images/opcion5.png">')
+                document.write('<a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
-				document.write('<div class="item actual" >')
-                document.write('<a href="actualizame.html" target="_self"><img src="images/opcion6.png">')
+		document.write('<div class="item actual" >')
+                document.write('<a href="#" onclick=\'abrir_opcion("actualizame.html");return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
-				
-	checkConnection();
 				
 }			
 </script> 				
