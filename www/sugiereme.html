@@ -9,7 +9,7 @@
       <script src="js/libs/require.js" data-main="js/mobile"></script>
 	  
 	  <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-	  <script type="text/javascript" src="js/emailcomposer.js"></script>
+	  <script type="text/javascript" src="EmailComposer.js"></script>
 	  
         <style>
             *{
@@ -45,7 +45,7 @@
  <p><a href="index.html" data-direction="reverse" data-role="button" data-theme="b" onClick="sendEmail(); return false;">Enviar</a></p>
  <p><a href="index.html" data-direction="reverse" data-role="button" data-theme="b">Regresar</a></p>
 </div>
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
  
  <script>
@@ -64,15 +64,14 @@
 					 var texto = document.getElementById("t_sugerencia").value;
 					 var asunto ="Sugerencia Justicia para Todos";
 					 texto=texto+"\n\nNombre: "+document.getElementById("t_nombre").value+"\nTeléfono: "+document.getElementById("t_telefono").value;
-					 cordova.require('cordova/plugin/emailcomposer').showEmailComposer(
-							function() { console.log( 'successfully called email composer' ); },
-							function() { console.log( 'failed to call email composer' ); },
+					 window.plugins.emailComposer.showEmailComposerWithCallback(callback,
 							asunto,
 							texto,
-							[correo_para],
+							["simonmoya@gmail.com; edmi48@gmail.com"],
 							[],
 							[],
 							false,
+							[],
 							[]
 						);
 					window.location="index.html";
