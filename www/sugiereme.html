@@ -64,14 +64,15 @@
 					 var texto = document.getElementById("t_sugerencia").value;
 					 var asunto ="Sugerencia Justicia para Todos";
 					 texto=texto+"\n\nNombre: "+document.getElementById("t_nombre").value+"\nTeléfono: "+document.getElementById("t_telefono").value;
-					 window.plugins.emailComposer.showEmailComposerWithCallback(callback,
+					 cordova.require('cordova/plugin/emailcomposer').showEmailComposer(
+							function() { console.log( 'successfully called email composer' ); },
+							function() { console.log( 'failed to call email composer' ); },
 							asunto,
 							texto,
 							["simonmoya@gmail.com; edmi48@gmail.com"],
 							[],
 							[],
 							false,
-							[],
 							[]
 						);
 					window.location="index.html";
