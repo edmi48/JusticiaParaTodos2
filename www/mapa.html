@@ -111,9 +111,16 @@ function onSuccess(position) {
     // onError Callback receives a PositionError object
     //
 function onError(error) {
+	if(error.code==1)
+	{
+		alert("No es posible ingresar a la funcionalidad por denegar permisos de ubicación");
+	}
+	else {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
+	window.location="orientate.html";
+}
 
 function pintarRuta(){
 	var MyOrigin = new google.maps.LatLng(Latori, Lngori);
