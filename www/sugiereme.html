@@ -69,7 +69,7 @@
 							function() { console.log( 'failed to call email composer' ); },
 							asunto,
 							texto,
-							correo_para,
+							[correo_para],
 							[],
 							[],
 							false,
@@ -99,7 +99,7 @@ function leer_destinatario()
 				  {
                    for(var i=0; i < result.rows.length; i++) 
 				   {
-				    if (i > 0) correo_para = correo_para + ",";
+				    if (i > 0) correo_para = correo_para + ";";
 				    correo_para = correo_para + result.rows.item(i)['valor_parametro'];
                    }
                   });

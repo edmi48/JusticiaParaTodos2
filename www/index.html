@@ -158,7 +158,7 @@ window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes'
 	
 	var icon_alto;				
 	var icon_ancho;
-
+	ventana_alto3 = ventana_alto3 -20;
 	if ($(window).width() < $(window).height()) {
 		icon_alto = 70;				
 		icon_ancho = 65;
@@ -190,28 +190,30 @@ window.open('https://mobile.twitter.com/MinjusticiaCo', '_blank', 'location=yes'
  }
  else 
  {
+		icon_alto = 110;				
+		icon_ancho = 100;
 		document.write('<div class="item shop">')
-                document.write('<a href="orientate.html" target="_self"><img src="images/opcion1.png"></a>')
+                document.write('<a href="orientate.html" target="_self"><img src="images/opcion1.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
 		document.write('</div>')
 				
                 document.write('<div class="item youtube" >')
-                document.write('<a href="#" onclick=\'abrir_opcion("informate.html");return false\'><img src="images/opcion2.png"></a>')
+                document.write('<a href="#" onclick=\'abrir_opcion("informate.html");return false\'><img src="images/opcion2.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
                 document.write('<div class="item fav">')
-                document.write('<a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png"></a>')
+                document.write('<a href="#" onclick="abrir_twitter();"><img src="images/opcion3.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
                 document.write('<div class="item home">')
-                document.write('<a href="#" onclick=\'abrir_opcion("sugiereme.html");return false\'><img src="images/opcion4.png"></a>')
+                document.write('<a href="#" onclick=\'abrir_opcion("sugiereme.html");return false\'><img src="images/opcion4.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 
                 document.write('<div class="item user" >')
-                document.write('<a href="creditos.html" target="_self"><img src="images/opcion5.png"></a>')
+                document.write('<a href="creditos.html" target="_self"><img src="images/opcion5.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
 		document.write('<div class="item actual" >')
-                document.write('<a href="#" onclick=\'abrir_opcion("actualizame.html");return false\'><img src="images/opcion6.png"></a>')
+                document.write('<a href="#" onclick=\'abrir_opcion("actualizame.html");return false\'><img src="images/opcion6.png" class="imagen-link" height="'+icon_alto+'px" width="'+icon_ancho+'px" ></a>')
                 document.write('</div>')
 				
 }			
