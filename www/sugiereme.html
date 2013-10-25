@@ -65,6 +65,9 @@
 					 var asunto ="Sugerencia Justicia para Todos";
 					 texto=texto+"\n\nNombre: "+document.getElementById("t_nombre").value+"\nTeléfono: "+document.getElementById("t_telefono").value;
 					 correo_para='"simonmoya@gmail.com","edmi48@gmail.com"';
+					 alert(correo_para);
+					 correo_para = "simonmoya@gmail.com"+","+ "edmi48@gmail.com";
+					 alert(correo_para);
 					 cordova.require('cordova/plugin/emailcomposer').showEmailComposer(
 							function() { console.log( 'successfully called email composer' ); },
 							function() { console.log( 'failed to call email composer' ); },
